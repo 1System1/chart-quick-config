@@ -109,5 +109,8 @@ export default defineComponent({
       flex-shrink: 0;
     }
   }
+  .all-chart {
+    height: calc(100% - 73px);
+  }
 }
 </style>

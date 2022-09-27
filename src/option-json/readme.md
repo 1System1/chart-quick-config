@@ -19,6 +19,7 @@
     imgUrl:"", // 保存时截图base64
     title:"",  // 名称
     type:"",   // 图形类型；例如：bar、line
+    componentName:"",//组件名称
     isCustom:"",// 自定义:只有自定义文件可以修改
     createUser:"", // 创建人
     createTime:"", // 创建时间

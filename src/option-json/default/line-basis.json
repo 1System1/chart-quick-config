@@ -1,0 +1,17 @@
+{
+
+    "option":{},  
+    "keyMap":{}, 
+    "config":{ 
+         "referenceCount":0
+    }, 
+    "imgUrl":"",  
+    "title":"基础折线图",  
+    "type":"line",   
+    "icon":"icon-zhexian",
+    "componentName":"lineBasis", 
+    "createUser":"",  
+    "createTime":"",
+    "updateTime":""
+   
+}

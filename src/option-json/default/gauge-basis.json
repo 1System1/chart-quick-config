@@ -1,0 +1,17 @@
+{
+
+    "option":{},  
+    "keyMap":{}, 
+    "config":{ 
+         "referenceCount":0
+    }, 
+    "imgUrl":"",  
+    "title":"基础仪表盘",  
+    "type":"gauge",   
+    "icon":"icon-yibiaopan",
+    "componentName":"gaugeBasis", 
+    "createUser":"",  
+    "createTime":"",
+    "updateTime":""
+   
+}

@@ -1,0 +1,17 @@
+{
+
+    "option":{},  
+    "keyMap":{}, 
+    "config":{ 
+         "referenceCount":0
+    }, 
+    "imgUrl":"",  
+    "title":"柱状标记图",  
+    "type":"bar",   
+    "icon":"icon-tagBar",
+    "componentName":"barTag", 
+    "createUser":"",  
+    "createTime":"",
+    "updateTime":""
+   
+}

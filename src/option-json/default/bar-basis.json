@@ -1,0 +1,26 @@
+{
+
+    "option":{},  
+    "keyMap":{
+        "x":"横坐标、类目轴",
+        "series":[
+            {
+                "key":"数值字段",
+                "name":"系列名称"
+            }
+        ]
+       
+    }, 
+    "config":{ 
+         "referenceCount":0
+    }, 
+    "imgUrl":"",  
+    "title":"基础柱状图",  
+    "type":"bar",   
+    "icon":"icon-zhuzhuangtu",
+    "componentName":"barBasis", 
+    "createUser":"",  
+    "createTime":"",
+    "updateTime":""
+   
+}

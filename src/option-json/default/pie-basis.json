@@ -1,0 +1,17 @@
+{
+
+    "option":{},  
+    "keyMap":{}, 
+    "config":{ 
+         "referenceCount":0
+    }, 
+    "imgUrl":"",  
+    "title":"基础饼图",  
+    "type":"pie",   
+    "icon":"icon-bingtu",
+    "componentName":"pieBasis", 
+    "createUser":"",  
+    "createTime":"",
+    "updateTime":""
+   
+}

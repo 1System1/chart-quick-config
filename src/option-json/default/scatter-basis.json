@@ -1,0 +1,17 @@
+{
+
+    "option":{},  
+    "keyMap":{}, 
+    "config":{ 
+         "referenceCount":0
+    }, 
+    "imgUrl":"",  
+    "title":"基础散点图",  
+    "type":"scatter",   
+    "icon":"icon-sandiantu",
+    "componentName":"scatterBasis", 
+    "createUser":"",  
+    "createTime":"",
+    "updateTime":""
+   
+}

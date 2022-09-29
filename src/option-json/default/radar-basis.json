@@ -6,10 +6,10 @@
          "referenceCount":0
     }, 
     "imgUrl":"",  
-    "title":"基础柱状图",  
-    "type":"bar",   
-    "isCustom":false, 
-    "componentName":"basisBar", 
+    "title":"基础雷达图",  
+    "type":"radar",   
+    "icon":"icon-leidatu",
+    "componentName":"radarBasis", 
     "createUser":"",  
     "createTime":"",
     "updateTime":""

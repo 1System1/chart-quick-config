@@ -9,7 +9,7 @@
     "title":"柱状标记图",  
     "type":"bar",   
     "icon":"icon-tagBar",
-    "componentName":"barTag", 
+    "id":"barTag", 
     "createUser":"",  
     "createTime":"",
     "updateTime":""

@@ -24,7 +24,7 @@
       <div class="block">
         <!--  -->
         <div class="chart-item" v-for="(item, index) in filterChartResult" :key="index">
-          <el-card class="box-card" style="width: 100%; height: 100%">
+          <el-card class="box-card" style="width: 100%; height: 100%" shadow="hover">
             <el-image class="img-item" :src="item.imgUrl">
               <template #error>
                 <icon-svg :className="item.icon || 'icon-tupian-jiazaishibai'" size="24"></icon-svg>
@@ -37,33 +37,15 @@
                 }}</span
               >
               <div class="btn-icon">
-                <icon-svg className="icon-bianji" size="14" @click="editChart(item)"></icon-svg>
-                <icon-svg
-                  className="icon-yulan"
-                  size="14"
-                  style="margin-left: 12px"
-                  @click="previewChart(item)"
-                ></icon-svg>
+                <span title="编辑" @click="editChart(item)">
+                  <icon-svg className="icon-bianji" size="14"></icon-svg>
+                </span>
+                <span title="预览" @click="previewChart(item)">
+                  <icon-svg className="icon-yulan" size="14" style="margin-left: 12px"></icon-svg>
+                </span>
               </div>
             </div>
           </el-card>
-          <!-- 阴影 -->
-          <div class="card-shadow">
-            <div class="shad-content">
-              <div class="footer">
-                <span class="title">{{ item.title }}</span>
-                <div class="btn-icon">
-                  <icon-svg className="icon-bianji" size="14" @click="editChart(item)"></icon-svg>
-                  <icon-svg
-                    className="icon-yulan"
-                    size="14"
-                    style="margin-left: 8px"
-                    @click="previewChart(item)"
-                  ></icon-svg>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -121,7 +103,9 @@ export default defineComponent({
     /**
      * 编辑图形跳转路由
      */
-    const editChart = () => {};
+    const editChart = () => {
+      //
+    };
     /**
      * 图形预览
      */

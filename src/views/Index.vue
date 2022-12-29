@@ -49,6 +49,7 @@
         </div>
       </div>
     </div>
+    <preview-chart v-model:visible="previewVisible" v-if="previewVisible"></preview-chart>
   </div>
 </template>
 
@@ -58,8 +59,10 @@
 import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import ChartKey from "./keys/ChartKey";
 import { getDefaultChartJson } from "@/option-json";
+import previewChart from "./previewChart";
 export default defineComponent({
   name: "indexView",
+  components: { previewChart },
   setup() {
     const state = reactive({
       activeTypes: ["all"], // 选中的图形类型
@@ -67,6 +70,7 @@ export default defineComponent({
       defaultCharts: [], // 系统默认配置
       customCharts: [], // 自定义配置
       filterChartResult: [], // 过滤后结果
+      previewVisible: false,
     });
     const chartTypes = ChartKey.CHART_TYPES;
     // 获取tag类型
@@ -109,7 +113,9 @@ export default defineComponent({
     /**
      * 图形预览
      */
-    const previewChart = () => {};
+    const previewChart = () => {
+      state.previewVisible = true;
+    };
     // 初始化所有图形json
     const initChartJson = () => {
       // 系统图形
@@ -168,15 +174,15 @@ export default defineComponent({
     .block {
       width: 100%;
 
-      display: flex;
       overflow-y: auto;
-      flex-wrap: wrap;
+
       .chart-item {
         cursor: pointer;
+        display: inline-flex;
         width: 300px;
         height: 254px;
         margin-left: 24px;
-        margin-top: 12px;
+        margin-top: 24px;
         :deep(.el-card__body) {
           width: calc(100% - 40px);
           height: calc(100% - 40px);

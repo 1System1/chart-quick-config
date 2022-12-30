@@ -2,10 +2,11 @@
  * @Author: shj shj@cnbisoft.com
  * @Date: 2022-12-29 09:21:19
  * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-30 11:33:20
+ * @LastEditTime: 2022-12-30 17:40:55
  * @FilePath: \chart-quick-config\src\views\previewChart.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
+
 <template>
   <el-dialog
     :title="activeChart.title"
@@ -19,7 +20,7 @@
         <icon-svg className="icon-xiazai" size="16" @click="exportImg"></icon-svg>
       </span>
     </div>
-    <div class="show-chart" style="width: 100%; height: 300px; border: 1px solid #eee">
+    <div class="show-chart" style="width: 100%; height: 300px; border: 1px solid #eee; display: none">
       <component
         :is="componentName"
         v-if="isShowChart"
@@ -33,7 +34,6 @@
 </template>
 <script>
 import { computed, defineComponent, defineAsyncComponent, onMounted, toRefs, reactive } from "vue";
-
 // 弹框预览图形组件
 export default defineComponent({
   props: {

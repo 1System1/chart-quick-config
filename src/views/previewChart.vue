@@ -2,7 +2,7 @@
  * @Author: shj shj@cnbisoft.com
  * @Date: 2022-12-29 09:21:19
  * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-29 16:21:55
+ * @LastEditTime: 2022-12-30 11:33:20
  * @FilePath: \chart-quick-config\src\views\previewChart.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -52,6 +52,7 @@ export default defineComponent({
     basicPie: defineAsyncComponent(() => import("./components/pie/basicPie.vue")),
     tagBar: defineAsyncComponent(() => import("./components/bar/tagBar.vue")),
     basicRadar: defineAsyncComponent(() => import("./components/radar/basicRadar.vue")),
+    stairBar: defineAsyncComponent(() => import("./components/bar/stairBar.vue")),
   },
   emits: ["update:visible"],
   setup(props, { emit }) {

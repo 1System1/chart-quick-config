@@ -1,17 +1,44 @@
 {
 
-    "option":{},  
-    "keyMap":{}, 
-    "config":{ 
-         "referenceCount":0
-    }, 
-    "imgUrl":"",  
+  "customConfig":{
+    "themeName": "customed",
+    "title":{
+      "show":false
+    }
+  },  
+  "keyMap":{
+      "nameKey": "name",  
+      "valueKeys": [
+        {
+          "field": "bnlj",
+          "name": "本年累计"
+        },
+        {
+          "field": "sntq",
+          "name": "上年同期"
+        }
+      ]
+  }, 
+  "datas":[
+    {
+      "bnlj": 60,
+      "sntq": 80,
+      "name": "营业收入"
+    },
+    {
+      "bnlj": 70,
+      "sntq": 90,
+      "name": "利润总额"
+    },
+    {
+      "bnlj": 100,
+      "sntq": 80,
+      "name": "营业成本"
+    }
+  ],
     "title":"基础折线图",  
     "type":"line",   
     "icon":"icon-zhexian",
-    "componentName":"lineBasis", 
-    "createUser":"",  
-    "createTime":"",
-    "updateTime":""
+    "componentName":"basicLine"
    
 }

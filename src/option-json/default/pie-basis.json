@@ -1,17 +1,38 @@
 {
 
-    "option":{},  
-    "keyMap":{}, 
-    "config":{ 
-         "referenceCount":0
-    }, 
-    "imgUrl":"",  
+    "customConfig":{
+        "themeName": "customed",
+        "title":{
+          "show":false
+        }
+      },  
+      "keyMap":{
+          "nameKey": "name",  
+          "valueKeys": [
+            {
+              "field": "bnlj",
+              "name": "本年累计"
+            }
+             
+          ]
+      }, 
+      "datas":[
+        {
+          "bnlj": 60,
+          "name": "营业收入"
+        },
+        {
+          "bnlj": 70,
+          "name": "利润总额"
+        },
+        {
+          "bnlj": 100,
+          "name": "营业成本"
+        }
+      ],
     "title":"基础饼图",  
     "type":"pie",   
     "icon":"icon-bingtu",
-    "componentName":"pieBasis", 
-    "createUser":"",  
-    "createTime":"",
-    "updateTime":""
+    "componentName":"basicPie"
    
 }

@@ -1,26 +1,43 @@
 {
 
-    "option":{},  
+    "customConfig":{
+      "themeName": "customed",
+      "title":{
+        "show":false
+      }
+    },  
     "keyMap":{
-        "x":"横坐标、类目轴",
-        "series":[
-            {
-                "key":"数值字段",
-                "name":"系列名称"
-            }
+        "nameKey": "name",  
+        "valueKeys": [
+          {
+            "field": "bnlj",
+            "name": "本年累计"
+          },
+          {
+            "field": "sntq",
+            "name": "上年同期"
+          }
         ]
-       
     }, 
-    "config":{ 
-         "referenceCount":0
-    }, 
-    "imgUrl":"",  
+    "datas":[
+      {
+        "bnlj": 60,
+        "sntq": 80,
+        "name": "营业收入"
+      },
+      {
+        "bnlj": 70,
+        "sntq": 90,
+        "name": "利润总额"
+      },
+      {
+        "bnlj": 100,
+        "sntq": 80,
+        "name": "营业成本"
+      }
+    ],
     "title":"基础柱状图",  
     "type":"bar",   
     "icon":"icon-zhuzhuangtu",
-    "componentName":"barBasis", 
-    "createUser":"",  
-    "createTime":"",
-    "updateTime":""
-   
+    "componentName":"basicBar"
 }

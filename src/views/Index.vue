@@ -25,7 +25,8 @@
         <!--  -->
         <div class="chart-item" v-for="(item, index) in filterChartResult" :key="index">
           <el-card class="box-card" style="width: 100%; height: 100%" shadow="hover">
-            <el-image class="img-item" :src="item.imgUrl">
+            <!-- <img src="../assets/chartPng/basicBar.png" /> -->
+            <el-image class="img-item" :src="getSrc(item)" fit="cover" @click="previewChart(item)">
               <template #error>
                 <icon-svg :className="item.icon || 'icon-tupian-jiazaishibai'" size="24"></icon-svg>
               </template>
@@ -49,7 +50,7 @@
         </div>
       </div>
     </div>
-    <preview-chart v-model:visible="previewVisible" v-if="previewVisible"></preview-chart>
+    <preview-chart v-model:visible="previewVisible" v-if="previewVisible" :activeChart="activeChart"></preview-chart>
   </div>
 </template>
 
@@ -71,6 +72,7 @@ export default defineComponent({
       customCharts: [], // 自定义配置
       filterChartResult: [], // 过滤后结果
       previewVisible: false,
+      activeChart: null, // 当前选中图形
     });
     const chartTypes = ChartKey.CHART_TYPES;
     // 获取tag类型
@@ -113,8 +115,17 @@ export default defineComponent({
     /**
      * 图形预览
      */
-    const previewChart = () => {
+    const previewChart = (item) => {
+      state.activeChart = item;
+
       state.previewVisible = true;
+    };
+    const getSrc = (item) => {
+      try {
+        return require(`../assets/chartPng/${item.componentName}.png`);
+      } catch (e) {
+        return "";
+      }
     };
     // 初始化所有图形json
     const initChartJson = () => {
@@ -126,6 +137,7 @@ export default defineComponent({
       initChartJson();
     });
     return {
+      getSrc,
       chartTypes,
       getTagType,
       ...toRefs(state),
@@ -202,6 +214,7 @@ export default defineComponent({
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            border-top: 1px solid #eee;
             .title {
               font-weight: 500;
               line-height: 1.4;
@@ -259,6 +272,22 @@ export default defineComponent({
         // }
       }
     }
+  }
+}
+:deep(.preview-chart-dialog) {
+  height: 450px;
+  .el-dialog__header {
+    border-bottom: 1px solid #d9d9d9;
+
+    line-height: 20px;
+    padding: 14px 24px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 16px;
+    flex-shrink: 0;
+  }
+  .el-dialog__body {
+    padding: 12px 24px;
   }
 }
 </style>

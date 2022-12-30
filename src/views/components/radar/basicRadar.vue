@@ -1,19 +1,18 @@
 <!--
  * @Author: shj shj@cnbisoft.com
- * @Date: 2022-12-29 09:21:19
+ * @Date: 2022-12-30 09:08:33
  * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-30 09:24:27
- * @FilePath: \chart-quick-config\src\views\components\bar\basicBar.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditTime: 2022-12-30 09:16:02
+ * @FilePath: \chart-quick-config\src\views\components\radar\basicRadar.vue
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEradar
 -->
 <template>
-  <div class="basic-bar" ref="basicBarRef"></div>
+  <div class="basic-radar" ref="basicRadarRef"></div>
 </template>
 
 <script>
 import { defineComponent, onMounted, reactive, toRefs, markRaw } from "vue";
 import * as echarts from "echarts";
-import { commafy } from "@/views/utils";
 // 基础柱状图
 export default defineComponent({
   props: {
@@ -33,7 +32,7 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
-      basicBarRef: null,
+      basicRadarRef: null,
       myChart: null,
     });
     const init = () => {
@@ -45,10 +44,11 @@ export default defineComponent({
       }
 
       // 初始化echarts实例
-      state.myChart = markRaw(echarts.init(state["basicBarRef"], themeName));
+      state.myChart = markRaw(echarts.init(state["basicRadarRef"], themeName));
 
       let option = getOption();
       Object.assign(option, props.customConfig);
+
       state.myChart.setOption(option);
       window.onresize = function () {
         if (state.myChart) state.myChart.resize();
@@ -56,41 +56,40 @@ export default defineComponent({
     };
     const getOption = () => {
       let option = {
-        tooltip: {
-          valueFormatter: (value) => {
-            return commafy(value, { digits: 2 });
-          },
-        },
         legend: {
           show: props.keyMap.valueKeys.length > 1,
           data: props.keyMap.valueKeys.map((r) => r.name),
           bottom: 20,
         },
-        xAxis: {
-          type: "category",
-          data: props.datas.map((r) => r[props.keyMap.nameKey]),
+        radar: {
+          // shape: 'circle',
+          indicator: props.datas.map((r) => {
+            return {
+              name: r[props.keyMap.nameKey],
+            };
+          }),
         },
-        yAxis: {
-          type: "value",
-        },
-
-        series: getSeries(),
+        series: [
+          {
+            name: "",
+            type: "radar",
+            data: getData(),
+          },
+        ],
       };
 
       return option;
     };
-    const getSeries = () => {
-      let series = [];
-      props.keyMap.valueKeys.forEach((valueKey) => {
-        series.push({
-          data: props.datas.map((row) => row[valueKey.field]),
-          name: valueKey.name,
-          type: "bar",
+    const getData = () => {
+      let datas = [];
+      props.keyMap.valueKeys.forEach((r) => {
+        datas.push({
+          value: props.datas.map((row) => row[r.field]),
+          name: r.name,
         });
       });
-      return series;
+      return datas;
     };
-
     onMounted(() => {
       init();
     });
@@ -101,7 +100,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.basic-bar {
+.basic-radar {
   width: 100%;
   height: 100%;
 }

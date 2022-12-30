@@ -1,13 +1,5 @@
-<!--
- * @Author: shj shj@cnbisoft.com
- * @Date: 2022-12-29 09:21:19
- * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-30 09:24:27
- * @FilePath: \chart-quick-config\src\views\components\bar\basicBar.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 <template>
-  <div class="basic-bar" ref="basicBarRef"></div>
+  <div class="basic-line" ref="basicLineRef"></div>
 </template>
 
 <script>
@@ -33,7 +25,7 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
-      basicBarRef: null,
+      basicLineRef: null,
       myChart: null,
     });
     const init = () => {
@@ -45,10 +37,11 @@ export default defineComponent({
       }
 
       // 初始化echarts实例
-      state.myChart = markRaw(echarts.init(state["basicBarRef"], themeName));
+      state.myChart = markRaw(echarts.init(state["basicLineRef"], themeName));
 
       let option = getOption();
       Object.assign(option, props.customConfig);
+
       state.myChart.setOption(option);
       window.onresize = function () {
         if (state.myChart) state.myChart.resize();
@@ -56,7 +49,14 @@ export default defineComponent({
     };
     const getOption = () => {
       let option = {
+        title: {
+          show: true,
+          text: "基础折线图",
+          top: 8,
+          left: "center",
+        },
         tooltip: {
+          trigger: "axis",
           valueFormatter: (value) => {
             return commafy(value, { digits: 2 });
           },
@@ -85,7 +85,7 @@ export default defineComponent({
         series.push({
           data: props.datas.map((row) => row[valueKey.field]),
           name: valueKey.name,
-          type: "bar",
+          type: "line",
         });
       });
       return series;
@@ -101,7 +101,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.basic-bar {
+.basic-line {
   width: 100%;
   height: 100%;
 }

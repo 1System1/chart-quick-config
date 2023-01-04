@@ -1,5 +1,5 @@
 <template>
-  <div class="basic-line" ref="basicLineRef"></div>
+  <div class="basic-bar" ref="basicBarRef"></div>
 </template>
 
 <script>
@@ -8,6 +8,7 @@ import * as echarts from "echarts";
 import { commafy } from "@/views/utils";
 // 基础柱状图
 export default defineComponent({
+  name: "BasicBar",
   props: {
     keyMap: {
       type: Object,
@@ -25,7 +26,7 @@ export default defineComponent({
   },
   setup(props) {
     const state = reactive({
-      basicLineRef: null,
+      basicBarRef: null,
       myChart: null,
     });
     const init = () => {
@@ -37,34 +38,35 @@ export default defineComponent({
       }
 
       // 初始化echarts实例
-      state.myChart = markRaw(echarts.init(state["basicLineRef"], themeName));
+      state.myChart = markRaw(echarts.init(state["basicBarRef"], themeName));
 
       let option = getOption();
       Object.assign(option, props.customConfig);
-
       state.myChart.setOption(option);
       window.onresize = function () {
         if (state.myChart) state.myChart.resize();
       };
     };
     const getOption = () => {
+      let legendShow = props.keyMap.valueKeys.length > 1;
       let option = {
-        title: {
-          show: true,
-          text: "基础折线图",
-          top: 8,
-          left: "center",
+        grid: {
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: legendShow ? 40 : 20,
+          containLabel: true,
         },
+
         tooltip: {
-          trigger: "axis",
           valueFormatter: (value) => {
             return commafy(value, { digits: 2 });
           },
         },
         legend: {
-          show: props.keyMap.valueKeys.length > 1,
+          show: legendShow,
           data: props.keyMap.valueKeys.map((r) => r.name),
-          bottom: 20,
+          bottom: 10,
         },
         xAxis: {
           type: "category",
@@ -85,7 +87,7 @@ export default defineComponent({
         series.push({
           data: props.datas.map((row) => row[valueKey.field]),
           name: valueKey.name,
-          type: "line",
+          type: "bar",
         });
       });
       return series;
@@ -101,7 +103,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-.basic-line {
+.basic-bar {
   width: 100%;
   height: 100%;
 }

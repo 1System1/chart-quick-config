@@ -2,7 +2,7 @@
  * @Author: shj shj@cnbisoft.com
  * @Date: 2022-12-29 09:21:19
  * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-30 17:40:55
+ * @LastEditTime: 2023-01-03 10:34:08
  * @FilePath: \chart-quick-config\src\views\previewChart.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -20,7 +20,7 @@
         <icon-svg className="icon-xiazai" size="16" @click="exportImg"></icon-svg>
       </span>
     </div>
-    <div class="show-chart" style="width: 100%; height: 300px; border: 1px solid #eee; display: none">
+    <div class="show-chart" style="width: 100%; height: 300px; border: 1px solid #eee">
       <component
         :is="componentName"
         v-if="isShowChart"
@@ -47,12 +47,14 @@ export default defineComponent({
     },
   },
   components: {
-    basicBar: defineAsyncComponent(() => import("./components/bar/basicBar.vue")),
-    basicLine: defineAsyncComponent(() => import("./components/line/basicLine.vue")),
-    basicPie: defineAsyncComponent(() => import("./components/pie/basicPie.vue")),
-    tagBar: defineAsyncComponent(() => import("./components/bar/tagBar.vue")),
-    basicRadar: defineAsyncComponent(() => import("./components/radar/basicRadar.vue")),
-    stairBar: defineAsyncComponent(() => import("./components/bar/stairBar.vue")),
+    // 基础图形
+    basicBar: defineAsyncComponent(() => import("./components/default/basicBar.vue")),
+    basicLine: defineAsyncComponent(() => import("./components/default/basicLine.vue")),
+    basicPie: defineAsyncComponent(() => import("./components/default/basicPie.vue")),
+    basicRadar: defineAsyncComponent(() => import("./components/default/basicRadar.vue")),
+    // 自定义图形
+    stairBar: defineAsyncComponent(() => import("./components/custom/stairBar.vue")),
+    tagBar: defineAsyncComponent(() => import("./components/custom/tagBar.vue")),
   },
   emits: ["update:visible"],
   setup(props, { emit }) {

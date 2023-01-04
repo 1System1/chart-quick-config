@@ -1,11 +1,3 @@
-<!--
- * @Author: shj shj@cnbisoft.com
- * @Date: 2022-12-30 09:08:33
- * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-30 09:16:02
- * @FilePath: \chart-quick-config\src\views\components\radar\basicRadar.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AEradar
--->
 <template>
   <div class="basic-radar" ref="basicRadarRef"></div>
 </template>
@@ -15,6 +7,7 @@ import { defineComponent, onMounted, reactive, toRefs, markRaw } from "vue";
 import * as echarts from "echarts";
 // 基础柱状图
 export default defineComponent({
+  name: "BasicRadar",
   props: {
     keyMap: {
       type: Object,

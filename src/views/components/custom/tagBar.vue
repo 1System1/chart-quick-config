@@ -6,36 +6,13 @@ import { defineComponent, onMounted, reactive, toRefs, markRaw } from "vue";
 
 import * as echarts from "echarts";
 import { commafy } from "@/views/utils";
-//指标分析柱状图
+//柱状标记图
 export default defineComponent({
-  name: "tagBar",
+  name: "TagBar",
   props: {
     keyMap: {
       type: Object,
       required: true,
-      default: () => {
-        return {
-          nameKey: "",
-          valueKeys: [
-            // 固定三个
-            {
-              field: "bnlj",
-              name: "本年累计",
-            },
-            {
-              field: "bnlj",
-              name: "增减率",
-              subfix: "", // 后缀
-              indicatorType: 1, // 正反向指标
-              formulaType: "", // 公式类型：增减额 zje、增减率  zjl
-            },
-            {
-              field: "sntq",
-              name: "上年同期",
-            },
-          ],
-        };
-      },
     },
     datas: {
       type: Array,
@@ -68,6 +45,7 @@ export default defineComponent({
       let row = props.datas.length ? props.datas[0] : {};
       let data = getChartData([k1, k2, k3], row);
       let option = getOptions([k1, k2, k3], data, k2.indicatorType);
+
       Object.assign(option, props.customConfig);
       state.myChart.setOption(option);
     };
@@ -98,10 +76,10 @@ export default defineComponent({
       let maxVal = Math.max(val1, val3);
       var option = {
         grid: {
-          left: "20",
-          right: "20",
-          top: "20",
-          bottom: "20",
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: 20,
           containLabel: true,
         },
 

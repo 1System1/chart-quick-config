@@ -11,11 +11,18 @@
         "valueKeys": [
           {
             "field": "bnlj",
-            "name": "本年累计"
+            "name": "本年累计",
+            "yAxisIndex":0
           },
           {
             "field": "sntq",
-            "name": "上年同期"
+            "name": "上年同期",
+            "yAxisIndex":0
+          },
+          {
+            "field": "zjl",
+            "name": "增减率",
+            "yAxisIndex":1
           }
         ]
     }, 
@@ -23,20 +30,23 @@
       {
         "bnlj": 60526,
         "sntq": 81450,
+        "zjl":80,
         "name": "营业收入"
       },
       {
         "bnlj": 75170,
         "sntq": 44810,
+        "zjl":70,
         "name": "利润总额"
       },
       {
         "bnlj": 10051,
         "sntq": 10850,
+        "zjl":75,
         "name": "营业成本"
       }
     ],
-    "title":"基础柱状图",  
+    "title":"双y轴",  
     "type":"bar",   
     "icon":"icon-zhuzhuangtu",
     "componentName":"basicBar"

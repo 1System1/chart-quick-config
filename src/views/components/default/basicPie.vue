@@ -5,8 +5,10 @@
 <script>
 import { defineComponent, onMounted, reactive, toRefs, markRaw } from "vue";
 import * as echarts from "echarts";
+import { commafy } from "@/views/utils";
 // 基础柱状图
 export default defineComponent({
+  name: "BasicPie",
   props: {
     keyMap: {
       type: Object,
@@ -50,6 +52,9 @@ export default defineComponent({
       let option = {
         tooltip: {
           trigger: "item",
+          valueFormatter: (value) => {
+            return commafy(value, { digits: 2 });
+          },
         },
         series: {
           type: "pie",

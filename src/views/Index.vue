@@ -186,7 +186,10 @@ export default defineComponent({
     .block {
       width: 100%;
 
-      overflow-y: auto;
+      overflow-y: hidden;
+      &:hover {
+        overflow-y: auto;
+      }
 
       .chart-item {
         cursor: pointer;

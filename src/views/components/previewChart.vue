@@ -1,19 +1,9 @@
-<!--
- * @Author: shj shj@cnbisoft.com
- * @Date: 2022-12-29 09:21:19
- * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2023-01-03 10:34:08
- * @FilePath: \chart-quick-config\src\views\previewChart.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-
 <template>
   <el-dialog
     :title="activeChart.title"
     v-model="dialogVisible"
-    width="30%"
     :before-close="handleClose"
-    custom-class="preview-chart-dialog"
+    custom-class="custom-dialog-common custom-dialog-width-600"
   >
     <div class="export">
       <span>
@@ -30,6 +20,9 @@
         :keyMap="activeChart.keyMap"
       ></component>
     </div>
+    <template #footer>
+      <el-button>关 闭</el-button>
+    </template>
   </el-dialog>
 </template>
 <script>
@@ -48,13 +41,14 @@ export default defineComponent({
   },
   components: {
     // 基础图形
-    basicBar: defineAsyncComponent(() => import("./components/default/basicBar.vue")),
-    basicLine: defineAsyncComponent(() => import("./components/default/basicLine.vue")),
-    basicPie: defineAsyncComponent(() => import("./components/default/basicPie.vue")),
-    basicRadar: defineAsyncComponent(() => import("./components/default/basicRadar.vue")),
+    basicBar: defineAsyncComponent(() => import("@/views/chartComponents/default/basicBar.vue")),
+    basicLine: defineAsyncComponent(() => import("@/views/chartComponents/default/basicLine.vue")),
+    basicPie: defineAsyncComponent(() => import("@/views/chartComponents/default/basicPie.vue")),
+    basicRadar: defineAsyncComponent(() => import("@/views/chartComponents/default/basicRadar.vue")),
     // 自定义图形
-    stairBar: defineAsyncComponent(() => import("./components/custom/stairBar.vue")),
-    tagBar: defineAsyncComponent(() => import("./components/custom/tagBar.vue")),
+    stairBar: defineAsyncComponent(() => import("@/views/chartComponents/custom/stairBar.vue")),
+    tagBar: defineAsyncComponent(() => import("@/views/chartComponents/custom/tagBar.vue")),
+    doubleYAxis: defineAsyncComponent(() => import("@/views/chartComponents/custom/doubleYAxis.vue")),
   },
   emits: ["update:visible"],
   setup(props, { emit }) {

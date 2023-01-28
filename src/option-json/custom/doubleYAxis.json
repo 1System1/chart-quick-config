@@ -12,42 +12,51 @@
           {
             "field": "bnlj",
             "name": "本年累计",
-            "yAxisIndex":0
+            "yAxisIndex":0,
+            "serieType":"bar"
           },
           {
             "field": "sntq",
             "name": "上年同期",
-            "yAxisIndex":0
+            "yAxisIndex":0,
+            "serieType":"bar"
           },
           {
             "field": "zjl",
             "name": "增减率",
-            "yAxisIndex":1
+            "yAxisIndex":1,
+            "serieType":"line"
           }
         ]
     }, 
     "datas":[
       {
-        "bnlj": 60526,
-        "sntq": 81450,
+        "bnlj": 1000,
+        "sntq": 800,
         "zjl":80,
-        "name": "营业收入"
+        "name": "1月"
       },
       {
-        "bnlj": 75170,
-        "sntq": 44810,
-        "zjl":70,
-        "name": "利润总额"
+        "bnlj": 1200,
+        "sntq": 1400,
+        "zjl":85,
+        "name": "2月"
       },
       {
-        "bnlj": 10051,
-        "sntq": 10850,
-        "zjl":75,
-        "name": "营业成本"
+        "bnlj": 1500,
+        "sntq": 1500,
+        "zjl":100,
+        "name": "3月"
+      },
+      {
+        "bnlj": 1700,
+        "sntq": 1600,
+        "zjl":125,
+        "name": "4月"
       }
     ],
-    "title":"双y轴",  
+    "title":"双轴图",  
     "type":"bar",   
     "icon":"icon-zhuzhuangtu",
-    "componentName":"basicBar"
+    "componentName":"doubleYAxis"
 }

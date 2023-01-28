@@ -50,7 +50,11 @@
         </div>
       </div>
     </div>
-    <preview-chart v-model:visible="previewVisible" v-if="previewVisible" :activeChart="activeChart"></preview-chart>
+    <preview-chart-dialog
+      v-model:visible="previewVisible"
+      v-if="previewVisible"
+      :activeChart="activeChart"
+    ></preview-chart-dialog>
   </div>
 </template>
 
@@ -60,10 +64,10 @@
 import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import ChartKey from "./keys/ChartKey";
 import { getDefaultChartJson } from "@/option-json";
-import previewChart from "./previewChart";
+import previewChartDialog from "./components/previewChart.vue";
 export default defineComponent({
   name: "indexView",
-  components: { previewChart },
+  components: { previewChartDialog },
   setup() {
     const state = reactive({
       activeTypes: ["all"], // 选中的图形类型
@@ -275,22 +279,6 @@ export default defineComponent({
         // }
       }
     }
-  }
-}
-:deep(.preview-chart-dialog) {
-  height: 450px;
-  .el-dialog__header {
-    border-bottom: 1px solid #d9d9d9;
-
-    line-height: 20px;
-    padding: 14px 24px;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 0 16px;
-    flex-shrink: 0;
-  }
-  .el-dialog__body {
-    padding: 12px 24px;
   }
 }
 </style>

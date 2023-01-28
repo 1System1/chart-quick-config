@@ -1,0 +1,41 @@
+ 
+// 公共弹框样式
+.custom-dialog-common {
+    .el-dialog__header {
+        border-bottom: 1px solid #d9d9d9;
+        min-height: 50px;
+        padding: 13px 20px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #333333;
+        display: flex;
+        align-items: center;
+    }
+    .el-dialog__footer {
+        border-top: 1px solid #d9d9d9;
+        min-height: 60px;
+        padding: 14px 16px;
+        .el-button + .el-button {
+            margin-left: 16px;
+        }
+    }
+}
+// 弹框宽度1200
+.custom-dialog-width-1200 {
+    // 屏幕宽度小于1300
+    @media only screen and (max-width: 1300px) {
+        --el-dialog-width: 900px !important;
+    }
+    // 屏幕宽度大于1300
+    @media only screen and (min-width: 1300px) {
+        --el-dialog-width: 1200px !important;
+    }
+}
+// 弹框宽度900
+.custom-dialog-width-900 {
+    --el-dialog-width: 900px !important;
+}
+// 弹框宽度600
+.custom-dialog-width-600 {
+    --el-dialog-width: 600px !important;
+}

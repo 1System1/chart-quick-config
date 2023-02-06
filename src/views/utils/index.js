@@ -1,243 +1,52 @@
-/*
- * @Author: shj shj@cnbisoft.com
- * @Date: 2022-12-29 09:21:19
- * @LastEditors: shj shj@cnbisoft.com
- * @LastEditTime: 2022-12-29 18:01:22
- * @FilePath: \chart-quick-config\src\views\utils\index.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-import * as echarts from "echarts";
+import numberCommafy from "./commafy"
 /**
- * 设置echarts dom元素背景图片
- * dom：dom元素
- * flag：是否设置背景图片
- * size：大小：默认250px
+ *获取根据数值获取颜色
+ * @param {*} value 数值
+ * @param {*} month 月份
+ * @returns
  */
-export function setDomBackground  (dom, isEmpty, size = "250px")  {
-    if (isEmpty && dom) {
-      // 添加样式
-      dom.style.backgroundImage = "url(./empty.png)";
-      dom.style.backgroundRepeat = "no-repeat"; //设置背景不平铺
-      dom.style.backgroundPosition = "center"; //设置背景图的位置
-      dom.style.backgroundSize = size;
-      let echartsInstance = echarts.getInstanceByDom(dom); // 获取该dom元素上echart实例
-      if (echartsInstance) echartsInstance.clear();
-    } else if (dom) {
-      // 移除样式属性
-      dom.style.removeProperty("background-image");
-      dom.style.removeProperty("background-repeat-x");
-      dom.style.removeProperty("background-repeat-y");
-      dom.style.removeProperty("background-position-x");
-      dom.style.removeProperty("background-position-y");
-      dom.style.removeProperty("background-size");
-    }
-  }
- export  function commafy(num, options) {
-    let commafyOptions={
-        spaceNumber: 3,//分割位数，默认3
-        separator: ",",//分隔符，默认','
-        digits: null,// 只对 number 类型有效，小数位数,默认null
-        round:true ,// 只对 number 类型有效，四舍五入，默认true
-        ceil:false,//只对 number 类型有效，向上舍入
-        floor:false // 只对 number 类型有效，向下舍入
-    }
-    var opts = Object.assign({}, commafyOptions, options)
-    var optDigits = opts.digits
-  var isNum = isNumber(num)
-  var rest, result, isNegative, intStr, floatStr
- 
-var ceil = helperCreateMathNumber('ceil')
-var floor = helperCreateMathNumber('floor')
-var round = helperCreateMathNumber('round')
-  if (isNum) {
-    rest = (opts.ceil ? ceil : (opts.floor ? floor : round))(num, optDigits)
-    result = toNumberString(optDigits ? toFixed(rest, optDigits) : rest).split('.')
-    intStr = result[0]
-    floatStr = result[1]
-    isNegative = intStr && rest < 0
-    if (isNegative) {
-      intStr = intStr.substring(1, intStr.length)
-    }
-  } else {
-    rest = toValueString(num).replace(/,/g, '')
-    result = rest ? [rest] : []
-    intStr = result[0]
-  }
-  if (result.length) {
-    return (isNegative ? '-' : '') + intStr.replace(new RegExp('(?=(?!(\\b))(.{' + (opts.spaceNumber || 3) + '})+$)', 'g'), (opts.separator || ',')) + (floatStr ? ('.' + floatStr) : '')
-  }
-  return rest
-  }
+ export function getColor(value, month) {
+    // 颜色
 
-  function helperCreateMathNumber(name) {
-    return function (num, digits) {
-      var numRest = toNumber(num)
-      var rest = numRest
-      if (numRest) {
-        digits = digits >> 0
-        var numStr = toNumberString(numRest)
-        var nums = numStr.split('.')
-        var intStr = nums[0]
-        var floatStr = nums[1] || ''
-        var fStr = floatStr.substring(0, digits + 1)
-        var subRest = intStr + (fStr ? ('.' + fStr) : '')
-        if (digits >= floatStr.length) {
-          return toNumber(subRest)
-        }
-        subRest = numRest
-        if (digits > 0) {
-          var ratio = Math.pow(10, digits)
-          rest = Math[name](helperMultiply(subRest, ratio)) / ratio
-        } else {
-          rest = Math[name](subRest)
-        }
-      }
-      return rest
-    }
-  }
-  function helperMultiply (multiplier, multiplicand) {
-    var str1 = toNumberString(multiplier)
-    var str2 = toNumberString(multiplicand)
-    return parseInt(str1.replace('.', '')) * parseInt(str2.replace('.', '')) / Math.pow(10, helperNumberDecimal(str1) + helperNumberDecimal(str2))
-  }
-  function helperNumberDecimal (numStr) {
-    return (numStr.split('.')[1] || '').length
-  }
-  /**
- * 数值转字符串，科学计数转字符串
- * @param { Number } num 数值
- *
- * @return {Number}
+    let colors = ['#F38181', '#FCE38A', '#EAFFD0', '#95E1D3'];
+    // 区间坐标
+    let index = getIndex(value, month);
+    // 返回颜色值
+    return colors[index];
+}
+// 区间坐标
+export function getIndex(value, month) {
+    
+    // 获取区间范围
+    let rang = getRangs(month);
+    // 查找第一个大于value的坐标
+    let index = rang.findIndex((r) => r > value);
+    // 未找到：说明超出最大值，默认最后一个
+    if (index < 0) index = 3;
+    return index;
+}
+/**
+ * 获取范围
+ * @param {*} month
+ * @returns
  */
-function toNumberString(num) {
-  var rest = '' + num
-  var scienceMatchs = rest.match(/^([-+]?)((\d+)|((\d+)?[.](\d+)?))e([-+]{1})([0-9]+)$/)
-  if (scienceMatchs) {
-    var isNegative = num < 0
-    var absFlag = isNegative ? '-' : ''
-    var intNumStr = scienceMatchs[3] || ''
-    var dIntNumStr = scienceMatchs[5] || ''
-    var dFloatNumStr = scienceMatchs[6] || ''
-    var sciencFlag = scienceMatchs[7]
-    var scienceNumStr = scienceMatchs[8]
-    var floatOffsetIndex = scienceNumStr - dFloatNumStr.length
-    var intOffsetIndex = scienceNumStr - intNumStr.length
-    var dIntOffsetIndex = scienceNumStr - dIntNumStr.length
-    if (sciencFlag === '+') {
-      if (intNumStr) {
-        return absFlag + intNumStr + helperStringRepeat('0', scienceNumStr)
-      }
-      if (floatOffsetIndex > 0) {
-        return absFlag + dIntNumStr + dFloatNumStr + helperStringRepeat('0', floatOffsetIndex)
-      }
-      return absFlag + dIntNumStr + helperNumberOffsetPoint(dFloatNumStr, scienceNumStr)
-    }
-    if (intNumStr) {
-      if (intOffsetIndex > 0) {
-        return absFlag + '0.' + helperStringRepeat('0', Math.abs(intOffsetIndex)) + intNumStr
-      }
-      return absFlag + helperNumberOffsetPoint(intNumStr, intOffsetIndex)
-    }
-    if (dIntOffsetIndex > 0) {
-      return absFlag + '0.' + helperStringRepeat('0', Math.abs(dIntOffsetIndex)) + dIntNumStr + dFloatNumStr
-    }
-    return absFlag + helperNumberOffsetPoint(dIntNumStr, dIntOffsetIndex) + dFloatNumStr
-  }
-  return rest
-}
-function helperStringRepeat (str, count) {
-  if (str.repeat) {
-    return str.repeat(count)
-  }
-  var list = isNaN(count) ? [] : new Array(staticParseInt(count))
-  return list.join(str) + (list.length > 0 ? str : '')
-}
-
-var staticParseInt = parseInt
-
-function helperNumberOffsetPoint (str, offsetIndex) {
-  return str.substring(0, offsetIndex) + '.' + str.substring(offsetIndex, str.length)
+export function getRangs(month=6) {////[25,50,75,100]
+    debugger
+    let val = Math.floor((month / 12) * 100); // 向下取整 ：当前月/12*100
+    let val1 = Math.floor(val / 2); // 向下取整：(当前月/12*100)/2
+    let val2 = val * 2; // (当前月/12*100)*2
+    let val3 = val + val1; // (当前月/12*100) + ((当前月/12*100)/2)
+    // 排序 从小到大排序
+    let valRang = [val1, val, val3, val2].sort((a, b) => a - b);
+    return valRang;
 }
 
 /**
- * 转数值
- * @param { String/Number } str 数值
- *
- * @return {Number}
+ * 数字格式化
+ * @param {*} number 
+ * @param {*} options 
+ * @returns 
  */
- var toNumber = helperCreateToNumber(parseFloat)
-
- function helperCreateToNumber (handle) {
-  return function (str) {
-    if (str) {
-      var num = handle(str)
-      if (!isNaN(num)) {
-        return num
-      }
-    }
-    return 0
-  }
-}
-/**
-  * 判断是否Number对象
-  *
-  * @param {Object} obj 对象
-  * @return {Boolean}
-  */
- var isNumber = helperCreateInTypeof('number')
- function helperCreateInTypeof (type) {
-  return function (obj) {
-    return typeof obj === type
-  }
-}
-/**
-  * 将数值四舍五入并格式化为固定小数位的字符串
-  *
- * @param {string|number} num 数值
- * @param {number} digits 小数保留位数
-  * @return {String}
-  */
- function toFixed (num, digits) {
-  digits = digits >> 0
-  var round = helperCreateMathNumber('round')
-  var str = toValueString(round(num, digits))
-  var nums = str.split('.')
-  var intStr = nums[0]
-  var floatStr = nums[1] || ''
-  var digitOffsetIndex = digits - floatStr.length
-  if (digits) {
-    if (digitOffsetIndex > 0) {
-      return intStr + '.' + floatStr + helperStringRepeat('0', digitOffsetIndex)
-    }
-    return intStr + helperNumberOffsetPoint(floatStr, Math.abs(digitOffsetIndex))
-  }
-  return intStr
-}
-function toValueString (obj) {
-  if (isNumber(obj)) {
-    return toNumberString(obj)
-  }
-  return '' + (eqNull(obj) ? '' : obj)
-}
-/**
- * 判断是否 undefined 和 null
- * @param {Object} obj 对象
- * @return {Boolean}
- */
- function eqNull (obj) {
-  return isNull(obj) || isUndefined(obj)
-}
-/**
-  * 判断是否为Null
-  *
-  * @param {Object} obj 对象
-  * @return {Boolean}
-  */
- function isNull (obj) {
-  return obj === null
-}
-function isUndefined (obj) {
-  
-    return typeof obj === 'undefined'
-   
+export function commafy(number,options){
+   return numberCommafy(number,options)
 }

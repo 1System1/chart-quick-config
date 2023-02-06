@@ -1,32 +1,40 @@
+ 
 # chart-quick-cofig
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
 ### 一、最终想要效果
+
     传入数据Array、配置Object ==》选择图形配置==》图形展示
+
 ### 二、实现
+
     （1）、 数据集：通过主题、sql、api创建资源生成数据
     （2）、 选择图形配置： 通过图形配置页面保存图形配置
              图形配置：
@@ -50,8 +58,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
                 index.js // 路由
             -- store
             -- views
-                -- components 
+                -- components
                 -- editChart // 图形编辑
                 -- keys
                 -- previewChart // 图形预览
-                -- Index.js // 入口文件    
+                -- Index.js // 入口文件

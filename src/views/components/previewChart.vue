@@ -21,7 +21,7 @@
       ></component>
     </div>
     <template #footer>
-      <el-button>关 闭</el-button>
+      <el-button @click="handleClose">关 闭</el-button>
     </template>
   </el-dialog>
 </template>
@@ -45,10 +45,16 @@ export default defineComponent({
     basicLine: defineAsyncComponent(() => import("@/views/chartComponents/default/basicLine.vue")),
     basicPie: defineAsyncComponent(() => import("@/views/chartComponents/default/basicPie.vue")),
     basicRadar: defineAsyncComponent(() => import("@/views/chartComponents/default/basicRadar.vue")),
+    basicFunnel: defineAsyncComponent(() => import("@/views/chartComponents/default/basicFunnel.vue")),
+    basicCandlestick: defineAsyncComponent(() => import("@/views/chartComponents/default/basicCandlestick.vue")),
     // 自定义图形
     stairBar: defineAsyncComponent(() => import("@/views/chartComponents/custom/stairBar.vue")),
     tagBar: defineAsyncComponent(() => import("@/views/chartComponents/custom/tagBar.vue")),
     doubleYAxis: defineAsyncComponent(() => import("@/views/chartComponents/custom/doubleYAxis.vue")),
+    aGauge: defineAsyncComponent(() => import("@/views/chartComponents/custom/aGauge.vue")),
+    bGauge: defineAsyncComponent(() => import("@/views/chartComponents/custom/bGauge.vue")),
+    cGauge: defineAsyncComponent(() => import("@/views/chartComponents/custom/cGauge.vue")),
+    dGauge: defineAsyncComponent(() => import("@/views/chartComponents/custom/dGauge.vue")),
   },
   emits: ["update:visible"],
   setup(props, { emit }) {

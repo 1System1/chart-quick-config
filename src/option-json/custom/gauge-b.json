@@ -12,14 +12,14 @@
       }, 
       "datas":[
         {
-            "zjl": 25.658,
+            "zjl": 15.625,
             "name": "增减率"
           }  
       ],
-    "title":"渐变色仪表盘",  
+    "title":"圆环仪表盘",  
     "type":"gauge",   
     "icon":"icon-yibiaopan",
-    "id":"aGauge",
-    "componentName":"aGauge"
+    "id":"bGauge",
+    "componentName":"bGauge"
    
 }

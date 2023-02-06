@@ -9,7 +9,7 @@
     "title":"基础散点图",  
     "type":"scatter",   
     "icon":"icon-sandiantu",
-    "componentName":"scatterBasis", 
+    "componentName":"basicScatter", 
     "createUser":"",  
     "createTime":"",
     "updateTime":""

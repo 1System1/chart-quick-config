@@ -45,7 +45,6 @@
     "title":"阶梯瀑布图",  
     "type":"bar",   
     "icon":"icon-tagBar",
-    "id":"stairBar",
     "componentName":"stairBar"
    
 }

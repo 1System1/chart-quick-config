@@ -12,14 +12,13 @@
       }, 
       "datas":[
         {
-            "zjl": 25.658,
+            "zjl": 15.625,
             "name": "增减率"
           }  
       ],
-    "title":"基础仪表盘",  
+    "title":"钟表仪表盘",  
     "type":"gauge",   
     "icon":"icon-yibiaopan",
-    "id":"gaugeBasic",
-    "componentName":"gaugeBasic"
+    "componentName":"dGauge"
    
 }

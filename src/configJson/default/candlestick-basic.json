@@ -649,5 +649,6 @@
     "title":"基础K线图",  
     "type":"candlestick",   
     "icon":"icon-candlestick",
-    "componentName":"basicCandlestick"
+    "componentName":"basicCandlestick",
+    "isDefault":true
 }

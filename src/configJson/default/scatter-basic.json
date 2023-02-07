@@ -1,0 +1,33 @@
+{
+
+    "customConfig":{
+        "themeName": "customed",
+        "title":{
+          "show":false
+        }
+      },  
+    "keyMap":{
+        "nameKey": "name",  
+        "valueKeys": [
+            {
+                "field": "bnlj",
+                "name": "本年累计"
+                
+            },
+            {
+                "field": "sntq",
+                "name": "上年同期"
+            }
+        ]
+    }, 
+    "datas":[],
+    "title":"基础散点图",  
+    "type":"scatter",   
+    "icon":"icon-sandiantu",
+    "componentName":"basicScatter",
+    "isDefault":true,
+    "extendConfig":{
+
+    }
+   
+}

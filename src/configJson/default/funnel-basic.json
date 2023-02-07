@@ -20,7 +20,7 @@
     "title":"基础漏斗图",  
     "type":"funnel",   
     "icon":"icon-loudoutu",
-    "id":"basicFunnel",
-    "componentName":"basicFunnel"
+    "componentName":"basicFunnel",
+    "isDefault":true
    
 }

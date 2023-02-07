@@ -55,7 +55,8 @@
     "title":"基础雷达图",  
     "type":"radar",   
     "icon":"icon-leidatu",
-    "componentName":"basicRadar"
+    "componentName":"basicRadar",
+    "isDefault":true
     
    
 }

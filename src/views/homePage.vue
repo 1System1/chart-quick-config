@@ -60,15 +60,16 @@
 
 <script>
 // 首页显示所有图形
-
 import { defineComponent, onMounted, reactive, toRefs } from "vue";
 import ChartKey from "./keys/ChartKey";
-import { getDefaultChartJson } from "@/option-json";
+import { getDefaultChartJson } from "@/configJson";
 import previewChartDialog from "./components/previewChart.vue";
+// import { useRouter } from "vue-router";
 export default defineComponent({
   name: "indexView",
   components: { previewChartDialog },
   setup() {
+    // const router = useRouter();
     const state = reactive({
       activeTypes: ["all"], // 选中的图形类型
       keyword: "", // 关键字搜索
@@ -113,8 +114,11 @@ export default defineComponent({
     /**
      * 编辑图形跳转路由
      */
-    const editChart = () => {
-      //
+    const editChart = (item) => {
+      window.open(`/#/chartEdit/${item.componentName}`, "_black");
+      // router.push({
+      //   path: `/chartEdit/${item.componentName}`,
+      // });
     };
     /**
      * 图形预览

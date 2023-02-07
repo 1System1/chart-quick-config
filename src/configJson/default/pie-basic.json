@@ -33,6 +33,7 @@
     "title":"基础饼图",  
     "type":"pie",   
     "icon":"icon-bingtu",
-    "componentName":"basicPie"
+    "componentName":"basicPie",
+    "isDefault":true
    
 }

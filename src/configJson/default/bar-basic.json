@@ -39,5 +39,10 @@
     "title":"基础柱状图",  
     "type":"bar",   
     "icon":"icon-zhuzhuangtu",
-    "componentName":"basicBar"
+    "componentName":"basicBar",
+    "isDefault":true,
+    "extendConfig":{},
+    "editSlot":""
+
+    
 }

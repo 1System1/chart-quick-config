@@ -1,4 +1,3 @@
- 
 # chart-quick-cofig
 
 ## Project setup
@@ -63,3 +62,32 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
                 -- keys
                 -- previewChart // 图形预览
                 -- Index.js // 入口文件
+
+### 目录
+
+```
+|—— node_modules
+|—— public
+|—— src
+|   |—— assets
+|   |—— components
+|   |   |—— customComponents                            # 自定义全局组件
+|   |—— configJson                                      # 图形配置
+|   |   |—— custom                                      # 组合图配置
+|   |   |—— default                                     # 基础图形配置
+|   |   |—— index.js                                    # 合并导出所有配置
+|   |   |—— mock                                        # mock数据
+|   |   |—— router                                      # 路由
+|   |   |—— store                                       # vuex存储
+|   |   |—— views
+|   |   |   |—— chartComponents                         # 图形组件
+|   |   |   |   |—— custom                              # 组合图组件
+|   |   |   |   |—— default                             # 基础图形组件
+|   |   |   |—— components
+|   |   |   |   |—— previewChart                        # 图形预览弹框
+|   |   |   |   |—— previewJson                         # json预览组件
+|   |   |   |—— editComponents                          # 图形编辑组件
+|   |   |   |—— keys
+|   |   |   |—— utils
+|   |   |   |—— homePage.vue                            # 首页
+```

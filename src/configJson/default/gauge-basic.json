@@ -16,10 +16,10 @@
             "name": "增减率"
           }  
       ],
-    "title":"渐变色仪表盘",  
+    "title":"基础仪表盘",  
     "type":"gauge",   
     "icon":"icon-yibiaopan",
-    "id":"aGauge",
-    "componentName":"aGauge"
+    "componentName":"gaugeBasic",
+    "isDefault":true
    
 }

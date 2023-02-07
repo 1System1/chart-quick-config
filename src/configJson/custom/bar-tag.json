@@ -37,7 +37,6 @@
     "title":"柱状标记图",  
     "type":"bar",   
     "icon":"icon-tagBar",
-    "id":"tagBar",
     "componentName":"tagBar"
    
 }

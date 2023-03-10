@@ -3,7 +3,7 @@
  * 导出系统默认图形json
  * @returns 
  */
-export function getDefaultChartJson() {
+export function getAllChartJson() {
    
     /* eslint-disable */
     const defalutJson = require.context('./default', true, /\.json$/);

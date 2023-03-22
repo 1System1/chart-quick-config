@@ -1,0 +1,36 @@
+{
+    "customConfig": {
+        "keyMap": {
+            "nameKey": "",
+            "valueKeys": [
+                {
+                    "field": "bnlj",
+                    "name": "本年累计"
+                },
+                {
+                    "field": "",
+                    "name": "增减率",
+                    "subfix": "%",
+                    "indicatorType": 1,
+                    "formulaType": "zjl"
+                },
+                {
+                    "field": "sntq",
+                    "name": "上年同期"
+                }
+            ]
+        }
+    },
+
+    "datas": [
+        {
+            "bnlj": 60,
+            "sntq": 80,
+            "name": "营业收入"
+        }
+    ],
+    "title": "柱状标记图",
+    "type": "bar",
+    "icon": "icon-tagBar",
+    "componentName": "tagBar"
+}

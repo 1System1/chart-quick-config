@@ -1,0 +1,20 @@
+{
+    "customConfig": {
+        "keyMap": {
+            "nameKey": "name",
+            "valueKey": "zjl"
+        }
+    },
+
+    "datas": [
+        {
+            "zjl": 25.658,
+            "name": "增减率"
+        }
+    ],
+    "title": "基础仪表盘",
+    "type": "gauge",
+    "icon": "icon-yibiaopan",
+    "componentName": "gaugeBasic",
+    "isDefault": true
+}

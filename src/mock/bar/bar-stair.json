@@ -1,0 +1,44 @@
+{
+    "customConfig": {
+        "keyMap": {
+            "nameKey": "name",
+            "valueKeys": [
+                {
+                    "field": "bnlj",
+                    "name": "本年累计"
+                }
+            ]
+        }
+    },
+
+    "datas": [
+        {
+            "bnlj": 1200,
+            "name": "2017年"
+        },
+        {
+            "bnlj": 1440,
+            "name": "2018年"
+        },
+        {
+            "bnlj": -120,
+            "name": "2019年"
+        },
+        {
+            "bnlj": 1460,
+            "name": "2020年"
+        },
+        {
+            "bnlj": 1540,
+            "name": "2021年"
+        },
+        {
+            "bnlj": -130,
+            "name": "2022年"
+        }
+    ],
+    "title": "阶梯瀑布图",
+    "type": "bar",
+    "icon": "icon-tagBar",
+    "componentName": "stairBar"
+}

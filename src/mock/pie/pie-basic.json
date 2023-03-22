@@ -1,0 +1,33 @@
+{
+    "customConfig": {
+        "keyMap": {
+            "nameKey": "name",
+            "valueKeys": [
+                {
+                    "field": "bnlj",
+                    "name": "本年累计"
+                }
+            ]
+        }
+    },
+
+    "datas": [
+        {
+            "bnlj": 7560,
+            "name": "营业收入"
+        },
+        {
+            "bnlj": 7140,
+            "name": "利润总额"
+        },
+        {
+            "bnlj": 1047,
+            "name": "营业成本"
+        }
+    ],
+    "title": "基础饼图",
+    "type": "pie",
+    "icon": "icon-bingtu",
+    "componentName": "basicPie",
+    "isDefault": true
+}

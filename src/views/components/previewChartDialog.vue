@@ -6,13 +6,14 @@
             </span>
         </div>
         <div class="show-chart" style="width: 100%; height: 300px; border: 1px solid #eee">
-            <preview-chart
+            <!-- <preview-chart
                 v-if="isShowChart"
                 ref="previewChartRef"
                 :chartName="componentName"
                 :customConfig="activeChart.customConfig"
                 :datas="activeChart.datas"
-                :keyMap="activeChart.keyMap" />
+                :keyMap="activeChart.customConfig.keyMap" /> -->
+            <preview-chart v-if="isShowChart" ref="previewChartRef" :option="option" />
         </div>
         <template #footer>
             <el-button @click="handleClose">关 闭</el-button>
@@ -21,7 +22,10 @@
 </template>
 <script>
     import { computed, defineComponent, onMounted, toRefs, reactive } from 'vue';
-    import previewChart from './previewChart.vue';
+    // import previewChart from '../previewChart';
+    import previewChart from '../previewChart/canvas';
+    import ChartConfig from '../previewChart/chartEntityClass';
+    import { getAllChartJson } from '@/mock';
     // 弹框预览图形组件
     export default defineComponent({
         components: {
@@ -48,6 +52,7 @@
                         show: false,
                     },
                 },
+                option: null,
             });
             const componentName = computed(() => {
                 return props.activeChart.componentName;
@@ -80,7 +85,14 @@
                 URL.revokeObjectURL(elink.href); // 释放URL 对象
                 document.body.removeChild(elink);
             };
+            const getOption = () => {
+                let JSON = getAllChartJson();
+                const { datas, customConfig } = JSON.find((r) => r.componentName == componentName.value);
+                let chart = new ChartConfig(componentName.value, datas, customConfig);
+                state.option = chart.getOption();
+            };
             onMounted(() => {
+                getOption();
                 setTimeout(() => {
                     state.isShowChart = true;
                 }, 200);

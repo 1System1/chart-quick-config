@@ -51,8 +51,8 @@
 <script>
     // 首页显示所有图形
     import { defineComponent, onMounted, reactive, toRefs } from 'vue';
-    import ChartKey from './keys/ChartKey';
-    import { getAllChartJson } from '@/configJson';
+    import ChartKey from './utils/ChartKey';
+    import { getAllChartJson } from '@/mock';
     import previewChartDialog from './components/previewChartDialog.vue';
     // import { useRouter } from "vue-router";
     export default defineComponent({

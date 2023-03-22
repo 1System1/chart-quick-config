@@ -1,0 +1,19 @@
+{
+    "customConfig": {
+        "keyMap": {
+            "nameKey": "name",
+            "valueKey": "zjl"
+        }
+    },
+
+    "datas": [
+        {
+            "zjl": 15.625,
+            "name": "增减率"
+        }
+    ],
+    "title": "钟表仪表盘",
+    "type": "gauge",
+    "icon": "icon-yibiaopan",
+    "componentName": "dGauge"
+}

@@ -1,0 +1,55 @@
+{
+    "customConfig": {
+        "keyMap": {
+            "nameKey": "name",
+            "valueKeys": [
+                {
+                    "field": "bnlj",
+                    "name": "本年累计"
+                },
+                {
+                    "field": "sntq",
+                    "name": "上年同期"
+                }
+            ]
+        }
+    },
+
+    "datas": [
+        {
+            "bnlj": 60,
+            "sntq": 80,
+            "name": "营业收入"
+        },
+        {
+            "bnlj": 70,
+            "sntq": 90,
+            "name": "利润总额"
+        },
+        {
+            "bnlj": 100,
+            "sntq": 80,
+            "name": "营业成本"
+        },
+        {
+            "bnlj": 70,
+            "sntq": 90,
+            "name": "销售费用"
+        },
+        {
+            "bnlj": 70,
+            "sntq": 90,
+            "name": "管理费用"
+        },
+        {
+            "bnlj": 70,
+            "sntq": 90,
+            "name": "财务费用"
+        }
+    ],
+    "title": "基础雷达图",
+    "type": "radar",
+    "icon": "icon-leidatu",
+    "componentName": "basicRadar",
+    "isDefault": true
+}
